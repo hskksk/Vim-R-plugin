@@ -1597,7 +1597,7 @@ function RSourceLines(...)
     endif
 
     let sargs = GetSourceArgs(a:2)
-    let rcmd = 'base::source("' . g:rplugin_rsource . '"' . sargs . ')'
+    let rcmd = 'base::source("' . g:rplugin_rsource . '"' . sargs . ', encoding="utf-8")'
     let ok = g:SendCmdToR(rcmd)
     return ok
 endfunction
@@ -1610,7 +1610,7 @@ function SendFileToR(e)
         let fpath = substitute(fpath, "\\", "/", "g")
     endif
     let sargs = GetSourceArgs(a:e)
-    call g:SendCmdToR('base::source("' . fpath .  '"' . sargs . ')')
+    call g:SendCmdToR('base::source("' . fpath .  '"' . sargs . ', encoding="utf-8")')
 endfunction
 
 " Send block to R
